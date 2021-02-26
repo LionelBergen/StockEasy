@@ -24,10 +24,10 @@ Environment variables used by project (auto added when building locally)
 ------------------------------
     ${DATABASE_URL}="postgres://dad:business@localhost:5432/dad_business_to_business"
     
-    ${MAILGUN_DOMAIN}="sandbox6c370c68eeb54b2696ae5a20753054c1.mailgun.org"
-    ${MAILGUN_KEY}="838ddd36e7095f825bbe36dd8a126ee4-c322068c-374983ff"
+    ${MAILGUN_DOMAIN}=""
+    ${MAILGUN_KEY}="
     ${MAILGUN_FROM_NAME}="Test Account"
-    ${MAILGUN_FROM_EMAIL}="postmaster@sandbox6c370c68eeb54b2696ae5a20753054c1.mailgun.org"
+    ${MAILGUN_FROM_EMAIL}=""
 	
 Deploy application (Does not run tests)
 ---------------------------------------
