@@ -4,8 +4,9 @@ An easy way for For Restaurants 🍔, Bars 🍺 Etc. to order food, drink etc fr
 Uses Gradle, Spring, Kotlin, Seleneium  
 
 Under Construction 🚧
---------------------- 
+-----------------------   
 This app is made freely available as-is and can be used as a starter to create a custom personalized Web store for small or medium sized locations that currently rely on manually sending off orders.  
+App's layout was originally specifically used for IPhones, so the layout may be wonky on Android/PC/Mac.  
 
 
 Run tests
@@ -24,10 +25,10 @@ Environment variables used by project (auto added when building locally)
 ------------------------------
     ${DATABASE_URL}="postgres://dad:business@localhost:5432/dad_business_to_business"
     
-    ${MAILGUN_DOMAIN}=""
-    ${MAILGUN_KEY}="
+    ${MAILGUN_DOMAIN}="sandbox6c370c68eeb54b2696ae5a20753054c1.mailgun.org"
+    ${MAILGUN_KEY}="838ddd36e7095f825bbe36dd8a126ee4-c322068c-374983ff"
     ${MAILGUN_FROM_NAME}="Test Account"
-    ${MAILGUN_FROM_EMAIL}=""
+    ${MAILGUN_FROM_EMAIL}="postmaster@sandbox6c370c68eeb54b2696ae5a20753054c1.mailgun.org"
 	
 Deploy application (Does not run tests)
 ---------------------------------------
