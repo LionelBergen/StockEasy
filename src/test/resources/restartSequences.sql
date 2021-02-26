@@ -1,0 +1,1 @@
+SELECT setval(pg_get_serial_sequence('cart', 'id'), coalesce(max(id), 0)+1 , false) FROM cart;

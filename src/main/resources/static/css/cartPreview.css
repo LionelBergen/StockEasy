@@ -1,0 +1,15 @@
+.email_preview_page {
+    flex-wrap: wrap;
+}
+
+.email_preview_page h2 span{
+    color: darkblue;
+}
+
+.email_orders {
+    text-decoration: underline;
+}
+
+.emailPreview {
+    width: 60%;
+}

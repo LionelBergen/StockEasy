@@ -1,0 +1,32 @@
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160295234-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-160295234-1');
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../external/js/jquery-3.4.1.min.js">\x3C/script>')</script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript">
+        $.each(document.styleSheets, function(i,sheet){
+            if(sheet.href=='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css') {
+                var rules = sheet.rules ? sheet.rules : sheet.cssRules;
+                if (rules.length == 0) {
+                    $('<link rel="stylesheet" type="text/css" href="../external/css/4.4.1.bootstrap.min.css" />').appendTo('head');
+                }
+            }
+        })
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/productPage.css">
+</head>

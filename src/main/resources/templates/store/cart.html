@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="common/head::head">
+    </head>
+    <title>View Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
+    <script src="../js/cart.js"></script>
+
+    <body>
+        <div class="content_container cart_page">
+            <p>Changes will be saved automatically.</p>
+            <div class="break"></div>
+            <p>Click <a id="home" href="../">here</a> to go back</p>
+            <div class="break"></div>
+            <p>Estimated subtotal: <span id="cart_total"></span></p>
+            <div class="break"></div>
+
+            <table class=".table-responsive-xl" id="cart_product_table">
+                <thead><tr>
+                    <th>Quantity</th>
+                    <th>Product Name</th>
+                    <th>Type</th>
+                    <th>Vendor</th>
+                    <th>Price (Each)</th>
+                    <th><!-- Remove button --></th>
+                </tr></thead>
+                <tbody>
+                    <tr th:each="cart_product,iter : ${cart_products}">
+                        <td><input type="number" min="1" class="quantity quantity_cart" th:data-index="${iter.index}" th:value="${cart_product.quantity}" /></td>
+                        <td class="cart_product" th:data="${cart_product.productId}" th:text="${cart_product.productName}"></td>
+                        <td class="cart_variant" th:data="${cart_product.variantId}" th:text="${cart_product.variantName}"></td>
+                        <td class="cart_vendor" th:data="${cart_product.vendorId}" th:text="${cart_product.vendorName}"></td>
+                        <td class="cart_price" th:data="${cart_product.price}" th:text="${cart_product.priceDisplay}"></td>
+                        <td><button class="remove_from_cart" th:data-index="${iter.index}">remove from cart</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="break"></div>
+            <p><a href="/deleteCart" id="deleteCart" onclick="return confirm('Cannot be un-done. Are you sure?')">Delete Entire Cart</a></p>
+            <div class="break"></div>
+            <p><a href="/submitCart" id="submitCart">Submit Purchase Email</a></p>
+        </div>
+    </body>
+</html>

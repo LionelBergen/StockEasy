@@ -1,0 +1,15 @@
+#cart_complete {
+    display: none;
+}
+
+.cart_page {
+    flex-wrap: wrap;
+}
+
+.quantity {
+    width: 60px;
+}
+
+#navbar-right {
+    cursor: pointer;
+}

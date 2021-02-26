@@ -1,0 +1,1 @@
+rootProject.name = "DAD-B2B"

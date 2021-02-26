@@ -1,0 +1,120 @@
+.navbar {
+    justify-content: flex-end;
+}
+
+.badge {
+    padding: 0.005em 0.70em;
+}
+
+.badge:after {
+   content: attr(data-count);
+   text-align: center;
+   vertical-align: middle;
+   position: absolute;
+   background: #ff6600;
+   height: 2rem;
+   top: 1rem;
+   right: 1.5rem;
+   width: 2rem;
+   text-align: center;
+   line-height: 2rem;
+   font-size: 1rem;
+   border-radius: 50%;
+   color: white;
+   border: 1px solid #ff6600;
+   font-family: sans-serif;
+   font-weight: bold;
+}
+
+.fa-shopping-cart {
+    font-size: 48px !important;
+}
+
+.addToCartButton {
+    color: green;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+#product_table {
+    display: none;
+    font-size: 1.5em;
+    table-layout: auto;
+    margin-left: 30px;
+}
+
+#product_search_div {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0;
+    max-width: 800px;
+}
+
+#product_search {
+    font-size: 16px;
+}
+
+#product_table tbody tr:nth-child(3n) {
+    border-bottom: 1px solid #ccc!important;
+}
+
+#product_table tbody tr:nth-child(3n) td:last-child {
+    /** Gives the 'Add To Cart' button some breathing room. **/
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#product_table tbody tr:nth-child(4n) {
+    /*border-top: 1px solid #ccc!important;*/
+}
+
+/** Add spacing between vendors category and other categories **/
+.vendors_category {
+    margin-top: 10px;
+}
+
+#store_table {
+    min-width: 300px;
+    text-align: center;
+    /*padding-right: 15px;*/
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#store_table tr {
+    cursor: pointer;
+}
+
+
+#store_name {
+    display: inline;
+}
+
+#store_container_complete {
+    display: none;
+}
+
+.product_name_td {
+    color: blue;
+}
+
+#product_back_container {
+    vertical-align: sub;
+}
+
+#product_back_container:focus,#product_back_container:active:focus,#product_back_container.active:focus,
+#product_back_container.focus,#product_back_container:active.focus,#product_back_container.active.focus {
+    outline: none;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#product_back:focus,#product_back:active:focus,#product_back.active:focus,
+#product_back.focus,#product_back:active.focus,#product_back.active.focus {
+    outline: none;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}

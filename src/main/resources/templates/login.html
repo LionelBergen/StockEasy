@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="common/head::head">
+    </head>
+    <title>Product Services Login</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+
+    <body class="text-center">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="username" class="sr-only">Store Name</label>
+            <input class="form-control" id="username" name="username" placeholder="Store Name" required autofocus/>
+
+            <!-- Don't use passwords for now -->
+            <span class="hidden">
+            <label for="password">password</label>
+            <input id="password" name="password" />
+            </span>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit" id="login_submit">Sign in</button>
+            <p class="error_messages"><span th:text="${error}"></span></p>
+        </form>
+    </body>
+</html>

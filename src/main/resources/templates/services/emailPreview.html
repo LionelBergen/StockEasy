@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="common/head::head">
+</head>
+<title>Finalize Cart</title>
+<link rel="stylesheet" type="text/css" href="css/cartPreview.css">
+
+<body>
+    <div class="content_container email_preview_page">
+        <h1>Emails preview</h1>
+        <div class="break"></div>
+
+        <div th:each="preview : ${email_preview}" class="emailPreview">
+            <h2>Recipient: <span class="recipient_email" th:text="${preview.recipient}"></span></h2>
+            <h2>Subject: <span class="subject" th:text="${preview.subject}"></span></h2>
+
+            <h2 class="email_orders">Orders</h2>
+            <span th:each="emailItem : ${preview.items}">
+                <p>Item: <span th:text="${emailItem.itemDescription}"></span></p>
+                <p>Amount: <span th:text="${emailItem.quantity}"></span></p>
+            </span>
+        </div>
+
+        <div class="break"></div>
+        <p><a id="home" href="../">Cancel and go home</a></p>
+        <div class="break"></div>
+        <p><a id="submitCartFinal" onclick="return confirm('Are you sure you want to send emails and delete your cart?')" href="/submitCartFinal">Submit Cart</a></p>
+    </div>
+</body>
+</html>
