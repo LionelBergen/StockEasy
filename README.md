@@ -1,6 +1,12 @@
-Denton Alcohol Deliver Business To Business Web Application
------------------------------------------------------------
-Uses Gradle, Spring, Kotlin, Seleneium
+Stock Easy 
+----------
+An easy way for For Restaurants 🍔, Bars 🍺 Etc. to order food, drink etc from a personalized list of distributors.    
+Uses Gradle, Spring, Kotlin, Seleneium  
+
+Under Construction 🚧
+--------------------- 
+This app is made freely available as-is and can be used as a starter to create a custom personalized Web store for small or medium sized locations that currently rely on manually sending off orders.  
+
 
 Run tests
 ---------
