@@ -37,7 +37,9 @@ Application will be available on `localhost:8080`
 
 Creating the Database
 ---------------------
-**TODO: This will be done in a script soon...**
+**TODO: This will be done in a script eventually...**  
+
+Expects a Databsae with connection like: `jdbc:postgresql://localhost:5432/dad_business_to_business`  
 
     CREATE USER dad WITH PASSWORD 'business'
 
