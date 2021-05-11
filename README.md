@@ -1,7 +1,7 @@
 Stock Easy 
 ----------
 An easy way for For Restaurants 🍔, Bars 🍺 Etc. to order food, drink etc from a personalized list of distributors.    
-Uses Gradle, Spring, Kotlin, Seleneium  
+Uses **Gradle**, **Spring**, **Kotlin**, **Seleneium**, **Bootstrap**  
 
 Under Construction 🚧
 -----------------------   
