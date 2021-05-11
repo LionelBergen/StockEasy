@@ -4,9 +4,14 @@ import dad.business.data.component.User
 import dad.business.data.component.UserType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
+import org.springframework.web.bind.annotation.RequestMethod
+
+
+
 
 @Controller
 class AdminController {
@@ -22,5 +27,19 @@ class AdminController {
         }
 
         return "admin/admin";
+    }
+
+    @PostMapping("/admin")
+    fun addNewStore(request: HttpServletRequest, model: Model): String {
+        val session: HttpSession = request.getSession(true)
+        var currentLoggedInUser: User? = session.getAttribute("user") as User?
+
+        if (currentLoggedInUser == null) {
+            return "redirect:/"
+        } else if (!currentLoggedInUser.userTypes.contains(UserType.ADMIN)) {
+            return "redirect:/store";
+        }
+
+        return "admin/admin/addStore";
     }
 }
