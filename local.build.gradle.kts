@@ -128,7 +128,7 @@ tasks.register("dbTestDataLoader") {
     println("Running db test data")
 
     // starts postgresql service
-    dependsOn("startPostgres")
+    // dependsOn("startPostgres")
     dependsOn("loadTestDatabase")
 
     doLast {
