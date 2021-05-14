@@ -259,6 +259,10 @@ class DatabaseService {
         }
     }
 
+    fun insertStore() {
+
+    }
+
     private fun mapResultToUser(result: UserTable): User {
         return User(
             result.id.value,

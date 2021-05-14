@@ -1,5 +1,6 @@
-package dad.business
+package dad.business.admin
 
+import dad.business.data.DATBASE_UTIL
 import dad.business.data.component.User
 import dad.business.data.component.UserType
 import org.springframework.stereotype.Controller
@@ -9,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 import org.springframework.web.bind.annotation.RequestMethod
-
-
-
+import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
-class AdminController {
-    @RequestMapping("/admin")
-    fun adminLandingPage(request: HttpServletRequest, model: Model): String {
+class ManageStoresController {
+    @RequestMapping("/admin/manageStores")
+    fun adminLandingPage(
+        @RequestParam(value = "storeName", required = false) storeName: String?,
+        request: HttpServletRequest, model: Model): String {
         val session: HttpSession = request.getSession(true)
         var currentLoggedInUser: User? = session.getAttribute("user") as User?
 
@@ -26,6 +27,14 @@ class AdminController {
             return "redirect:/store";
         }
 
-        return "admin/admin";
+        if (storeName != null) {
+            // DATBASE_UTIL.
+        } else {
+            // clear the feedback
+            model.addAttribute("feedback", "");
+        }
+
+
+        return "admin/manageStores";
     }
 }

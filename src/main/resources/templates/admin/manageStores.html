@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="common/head::head">
+</head>
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/solid.min.css">
+<script src="../js/admin.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1 user-scalable=0">
+<title>Add Store</title>
+
+<form>
+    <table id="add_new_store" class=".table-responsive-xl">
+            <thead>
+                <tr><th></th></tr>
+                <tr><th></th></tr>
+                <tr><th></th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="storeName">Store Name:</label> <input name="storeName" id="storeName" type="text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-lg btn-primary btn-block" type="submit" value="submit" id="add-store-submit">Submit</button></td>
+                    <td><button class="btn btn-lg btn-primary btn-block" type="button" id="go-home">Home</button></td>
+                </tr>
+                <tr>
+                    <td id="feedback" th:text="${feedback}"></td>
+                </tr>
+            </tbody>
+    </table>
+</form>
