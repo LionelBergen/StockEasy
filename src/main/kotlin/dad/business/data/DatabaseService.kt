@@ -259,6 +259,28 @@ class DatabaseService {
         }
     }
 
+    fun getAllUsers() : List<User> {
+        var results = listOf<User>()
+        val sql = "SELECT id, username, email, full_name, phone_number FROM \"public\".user WHERE username!= 'admin'; "
+
+        transaction {
+            val preparedStatement = connection.prepareStatement(sql)
+            preparedStatement.execute()
+
+            while (preparedStatement.resultSet.next()) {
+                val id: Int = preparedStatement.resultSet.getInt("id")
+                val username: String = preparedStatement.resultSet.getString("username")
+                val email: String? = preparedStatement.resultSet.getString("email")
+                val fullName: String? = preparedStatement.resultSet.getString("full_name")
+                val phoneNumber: String? = preparedStatement.resultSet.getString("phone_number")
+
+                results += User(id, username, "", email, fullName, phoneNumber, listOf(), listOf())
+            }
+        }
+
+        return results
+    }
+
     fun insertStore() {
 
     }

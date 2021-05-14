@@ -10,7 +10,7 @@
 <title>Add Store</title>
 
 <form>
-    <table id="add_new_store" class=".table-responsive-xl">
+    <table id="add_new_store" class="table-responsive-xl">
             <thead>
                 <tr><th></th></tr>
                 <tr><th></th></tr>
@@ -30,5 +30,29 @@
                     <td id="feedback" th:text="${feedback}"></td>
                 </tr>
             </tbody>
+    </table>
+
+
+    <table id="table-of-all-users" class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Username (Login name)</th>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Phone Number</th>
+                <th>User Types (Permissions)</th>
+                <th>Stores</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.fullName}"></td>
+                <td th:text="${user.phoneNumber}"></td>
+                <td th:text="${user.userTypes}"></td>
+                <td th:text="${user.stores}"></td>
+            </tr>
+        </tbody>
     </table>
 </form>

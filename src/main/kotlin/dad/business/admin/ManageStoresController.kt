@@ -20,6 +20,8 @@ class ManageStoresController {
         request: HttpServletRequest, model: Model): String {
         val session: HttpSession = request.getSession(true)
         var currentLoggedInUser: User? = session.getAttribute("user") as User?
+        val allUsers = DATBASE_UTIL.getAllUsers()
+        println(allUsers)
 
         if (currentLoggedInUser == null) {
             return "redirect:/"
@@ -33,6 +35,8 @@ class ManageStoresController {
             // clear the feedback
             model.addAttribute("feedback", "");
         }
+
+        model.addAttribute("users", allUsers);
 
 
         return "admin/manageStores";

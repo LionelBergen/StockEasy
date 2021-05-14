@@ -1,3 +1,7 @@
 #feedback {
     color: red;
 }
+
+#table-of-all-users tr:hover {
+    background-color: #e6ede4;
+}
