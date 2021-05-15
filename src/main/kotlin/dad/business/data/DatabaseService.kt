@@ -322,8 +322,16 @@ class DatabaseService {
         return results
     }
 
-    fun insertStore() {
+    fun insertStore(username : String, email: String?, full_name : String?, phone_number : String?, storeName : String) {
+        val password = ""
+        val insertUserSQL = "INSERT INTO \"public\".user(username, password, email, full_name, phone_number) VALUES('$username', '$password', '$email', '$full_name', '$phone_number') RETURNING id;"
+        val insertStoreSQL = "INSERT INTO \"public\".store(name) VALUES('$storeName') RETURNING id;"
 
+        transaction {
+            val newUserId = executeSQL(insertUserSQL)
+            val newStoreId = executeSQL(insertStoreSQL)
+
+        }
     }
 
     private fun mapResultToUser(result: UserTable): User {
@@ -393,6 +401,16 @@ class DatabaseService {
             }
 
             return@transaction results
+        }
+    }
+
+    // executes the SQL and returns the ID
+    private fun executeSQL(sql : String) : Int {
+        return transaction {
+            val preparedStatement = connection.prepareStatement(sql)
+            preparedStatement.execute()
+            preparedStatement.resultSet.next()
+            return@transaction preparedStatement.resultSet.getInt(1)
         }
     }
 }

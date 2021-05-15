@@ -17,6 +17,11 @@ class ManageStoresController {
     @RequestMapping("/admin/manageStores")
     fun adminLandingPage(
         @RequestParam(value = "storeName", required = false) storeName: String?,
+        @RequestParam(value = "username", required = false) username: String?,
+        @RequestParam(value = "email", required = false) email: String?,
+        @RequestParam(value = "fullName", required = false) fullName: String?,
+        @RequestParam(value = "phoneNumber", required = false) phoneNumber: String?,
+        @RequestParam(value = "userType", required = false) userTypeString: String?,
         request: HttpServletRequest, model: Model): String {
         val session: HttpSession = request.getSession(true)
         var currentLoggedInUser: User? = session.getAttribute("user") as User?
@@ -30,11 +35,21 @@ class ManageStoresController {
         }
 
         if (storeName.isNullOrBlank()) {
-            // DATBASE_UTIL.
-            // model.addAttribute("feedback", "Store Name is Required!");
-        } else {
             // clear the feedback
             model.addAttribute("feedback", "");
+        } else {
+            if (username.isNullOrBlank()) {
+                model.addAttribute("feedback", "Username is required");
+            } else {
+                try {
+                    DATBASE_UTIL.insertStore(username, email, fullName, phoneNumber, storeName)
+                    model.addAttribute("feedback", "Added store successfully!");
+                } catch(e : Exception) {
+                    model.addAttribute("feedback", e);
+                }
+            }
+
+            return "redirect:manageStores";
         }
 
         model.addAttribute("users", allUsers);
