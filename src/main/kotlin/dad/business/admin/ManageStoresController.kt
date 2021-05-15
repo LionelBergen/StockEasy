@@ -29,14 +29,16 @@ class ManageStoresController {
             return "redirect:/store";
         }
 
-        if (storeName != null) {
+        if (storeName.isNullOrBlank()) {
             // DATBASE_UTIL.
+            // model.addAttribute("feedback", "Store Name is Required!");
         } else {
             // clear the feedback
             model.addAttribute("feedback", "");
         }
 
         model.addAttribute("users", allUsers);
+        model.addAttribute("userTypes", UserType.values());
 
 
         return "admin/manageStores";

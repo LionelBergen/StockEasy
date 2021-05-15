@@ -10,49 +10,46 @@
 <title>Add Store</title>
 
 <form>
-    <table id="add_new_store" class="table-responsive-xl">
-            <thead>
-                <tr><th></th></tr>
-                <tr><th></th></tr>
-                <tr><th></th></tr>
+    <h2>Add a User with Store:</h2>
+    <label for="username">User Name:</label> <input name="username" id="username" type="text"/>
+    <label for="email">Email:</label> <input name="email" id="email" type="text"/>
+    <label for="fullName">Person Name:</label> <input name="fullName" id="fullName" type="text"/>
+    <label for="phoneNumber">Phone Number:</label> <input name="phoneNumber" id="phoneNumber" type="text"/>
+    <label for="userType">Type:</label> <select name="userType" id="userType" type="text"> <option th:each="userType : ${userTypes}" th:value="${userType.type}" th:text="${userType.type}"></option> </select>
+    <label for="storeName">Store Name:</label> <input name="storeName" id="storeName" type="text"/>
+
+    <div>
+        <button class="btn btn-lg btn-primary" type="submit" value="submit" id="add-store-submit">Submit</button>
+        <button class="btn btn-lg btn-primary" type="button" id="go-home">Home</button>
+    </div>
+
+    <div>
+        <p id="feedback" th:text="${feedback}"></p>
+    </div>
+
+    <div id="manage-existing-stores">
+        <h2>Existing stores</h2>
+        <table id="table-of-all-users" class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Username (Login name)</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Phone Number</th>
+                    <th>User Types (Permissions)</th>
+                    <th>Stores</th>
+                </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <label for="storeName">Store Name:</label> <input name="storeName" id="storeName" type="text"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td><button class="btn btn-lg btn-primary btn-block" type="submit" value="submit" id="add-store-submit">Submit</button></td>
-                    <td><button class="btn btn-lg btn-primary btn-block" type="button" id="go-home">Home</button></td>
-                </tr>
-                <tr>
-                    <td id="feedback" th:text="${feedback}"></td>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.fullName}"></td>
+                    <td th:text="${user.phoneNumber}"></td>
+                    <td th:text="${user.userTypes}"></td>
+                    <td th:each="store : ${user.stores}" th:text="${store.name}"></td>
                 </tr>
             </tbody>
-    </table>
-
-
-    <table id="table-of-all-users" class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Username (Login name)</th>
-                <th>Email</th>
-                <th>Full Name</th>
-                <th>Phone Number</th>
-                <th>User Types (Permissions)</th>
-                <th>Stores</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.username}"></td>
-                <td th:text="${user.email}"></td>
-                <td th:text="${user.fullName}"></td>
-                <td th:text="${user.phoneNumber}"></td>
-                <td th:text="${user.userTypes}"></td>
-                <td th:text="${user.stores}"></td>
-            </tr>
-        </tbody>
-    </table>
+        </table>
+    </div>
 </form>

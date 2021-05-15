@@ -5,3 +5,7 @@
 #table-of-all-users tr:hover {
     background-color: #e6ede4;
 }
+
+#manage-existing-stores {
+    margin-top: 50px;
+}

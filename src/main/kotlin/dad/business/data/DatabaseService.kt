@@ -275,8 +275,28 @@ class DatabaseService {
                 val phoneNumber: String? = preparedStatement.resultSet.getString("phone_number")
 
                 val userTypes = findUserType(username)
+                val userStores = findUserStores(username)
 
-                results += User(id, username, "", email, fullName, phoneNumber, userTypes, listOf())
+                results += User(id, username, "", email, fullName, phoneNumber, userTypes, userStores)
+            }
+        }
+
+        return results
+    }
+
+    fun findUserStores(username : String) : List<StoreWithCategoryIds> {
+        var results = listOf<StoreWithCategoryIds>()
+        val sql = "SELECT DISTINCT store.name AS name FROM \"public\".user JOIN \"public\".user_store ON user_store.user_id = \"user\".id JOIN \"public\".store ON store.id = user_store.store_id WHERE \"user\".username = '$username'"
+
+        transaction {
+            val preparedStatement = connection.prepareStatement(sql)
+            preparedStatement.execute()
+
+            while (preparedStatement.resultSet.next()) {
+                val storeName: String = preparedStatement.resultSet.getString("name")
+
+                results += StoreWithCategoryIds(storeName, listOf())
+
             }
         }
 
