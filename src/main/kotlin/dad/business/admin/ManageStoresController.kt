@@ -26,7 +26,6 @@ class ManageStoresController {
         val session: HttpSession = request.getSession(true)
         var currentLoggedInUser: User? = session.getAttribute("user") as User?
         val allUsers = DATBASE_UTIL.getAllUsers()
-        println(allUsers)
 
         if (currentLoggedInUser == null) {
             return "redirect:/"
@@ -38,11 +37,11 @@ class ManageStoresController {
             // clear the feedback
             model.addAttribute("feedback", "");
         } else {
-            if (username.isNullOrBlank()) {
-                model.addAttribute("feedback", "Username is required");
+            if (username.isNullOrBlank() || userTypeString.isNullOrBlank()) {
+                model.addAttribute("feedback", "User with type is required");
             } else {
                 try {
-                    DATBASE_UTIL.insertStore(username, email, fullName, phoneNumber, storeName)
+                    DATBASE_UTIL.insertStore(username, email, fullName, phoneNumber, storeName, UserType.fromValue(userTypeString))
                     model.addAttribute("feedback", "Added store successfully!");
                 } catch(e : Exception) {
                     model.addAttribute("feedback", e);

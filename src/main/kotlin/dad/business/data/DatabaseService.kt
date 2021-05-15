@@ -322,7 +322,7 @@ class DatabaseService {
         return results
     }
 
-    fun insertStore(username : String, email: String?, full_name : String?, phone_number : String?, storeName : String) {
+    fun insertStore(username : String, email: String?, full_name : String?, phone_number : String?, storeName : String, userType: UserType) {
         val password = ""
         val insertUserSQL = "INSERT INTO \"public\".user(username, password, email, full_name, phone_number) VALUES('$username', '$password', '$email', '$full_name', '$phone_number') RETURNING id;"
         val insertStoreSQL = "INSERT INTO \"public\".store(name) VALUES('$storeName') RETURNING id;"
@@ -330,6 +330,9 @@ class DatabaseService {
         transaction {
             val newUserId = executeSQL(insertUserSQL)
             val newStoreId = executeSQL(insertStoreSQL)
+            val userTypeId = userType.code
+            executeSQL("INSERT INTO \"public\".user_user_type(user_type_id, user_id) VALUES ('$userTypeId', '$newUserId') RETURNING user_id;")
+            executeSQL("INSERT INTO \"public\".user_store(user_id, store_id) VALUES ('$newUserId', '$newStoreId') RETURNING user_id;")
 
         }
     }
