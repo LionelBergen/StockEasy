@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
-class ManageStoresController {
-    @RequestMapping("/admin/manageStores")
+class ManageVendorsController {
+    @RequestMapping("/admin/manageVendors")
     fun adminLandingPage(
         @RequestParam(value = "name", required = false) vendorName: String?,
         @RequestParam(value = "email", required = false) email: String?,
@@ -33,13 +33,11 @@ class ManageStoresController {
             // clear the feedback
             model.addAttribute("feedback", "");
         } else {
-
-
-            return "redirect:manageStores";
+            return "redirect:manageVendors";
         }
 
         model.addAttribute("vendors", allVendors);
 
-        return "admin/manageStores";
+        return "admin/manageVendors";
     }
 }
