@@ -24,7 +24,8 @@
         <div>
             <h2>Add A New Product:</h2>
             <label for="productName">Product Name:</label> <input name="productName" id="productName" type="text"/>
-            <label for="productCategory">Category:</label> <select name="productCategory" id="productCategory" type="text"> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
+            <label for="productCategory">Categories:</label> <select name="productCategory" id="productCategory" type="text"> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
+            <i class="fa fa-plus-circle addCategoryFieldBtn" id="addCategoryFieldBtn"></i>
         </div>
         <button class="btn btn-lg btn-primary" type="submit" value="Submit">Add Product</button>
         <button class="btn btn-lg btn-primary" type="button" id="go-home">Home</button>

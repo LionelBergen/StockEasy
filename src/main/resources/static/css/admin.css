@@ -13,3 +13,9 @@
 .admin-section-group {
     margin-bottom: 50px;
 }
+
+.addCategoryFieldBtn {
+    color: green;
+    margin-right: 20px;
+    cursor: pointer;
+}

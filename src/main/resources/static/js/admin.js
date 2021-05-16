@@ -22,4 +22,11 @@ $(document).ready(function() {
             window.location.href = '/';
         });
     }
+
+
+    if ($('#addCategoryFieldBtn')) {
+        $("#addCategoryFieldBtn").on('click', function(){
+            console.log('yes');
+        });
+    }
 });
