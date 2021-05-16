@@ -31,8 +31,19 @@ class ManageVendorsController {
 
         if (vendorName.isNullOrBlank() && email.isNullOrBlank()) {
             // clear the feedback
-            model.addAttribute("feedback", "");
+            model.addAttribute("feedback", "")
         } else {
+            if (vendorName.isNullOrBlank() || email.isNullOrBlank()) {
+                model.addAttribute("feedback", "Vendorname and email required")
+            } else {
+                try {
+                    DATBASE_UTIL.insertVendor(vendorName, email)
+                    model.addAttribute("feedback", "Added vendor!")
+                } catch (e : Exception) {
+                    model.addAttribute("feedback", e)
+                }
+            }
+
             return "redirect:manageVendors";
         }
 

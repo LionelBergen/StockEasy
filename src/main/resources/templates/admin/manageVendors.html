@@ -10,13 +10,9 @@
 <title>Add Store</title>
 
 <form>
-    <h2>Add a User with Store:</h2>
-    <label for="username">User Name:</label> <input name="username" id="username" type="text"/>
-    <label for="email">Email:</label> <input name="email" id="email" type="text"/>
-    <label for="fullName">Person Name:</label> <input name="fullName" id="fullName" type="text"/>
-    <label for="phoneNumber">Phone Number:</label> <input name="phoneNumber" id="phoneNumber" type="text"/>
-    <label for="userType">Type:</label> <select name="userType" id="userType" type="text"> <option th:each="userType : ${userTypes}" th:value="${userType.type}" th:text="${userType.type}"></option> </select>
-    <label for="storeName">Store Name:</label> <input name="storeName" id="storeName" type="text"/>
+    <h2>Add A New Vendor:</h2>
+    <label for="name">Vendor Name:</label> <input name="name" id="name" type="text"/>
+    <label for="email">Vendor Email (Used for checkout emails):</label> <input name="email" id="email" type="text"/>
 
     <div>
         <button class="btn btn-lg btn-primary" type="submit" value="submit" id="add-store-submit">Submit</button>

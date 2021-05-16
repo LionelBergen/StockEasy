@@ -357,6 +357,14 @@ class DatabaseService {
         }
     }
 
+    fun insertVendor(vendorName : String, email: String) {
+        val insertVendorSQL = "INSERT INTO \"public\".vendor(name, email) VALUES('$vendorName', '$email') RETURNING id;"
+
+        transaction {
+            val newVendorId = executeSQL(insertVendorSQL)
+        }
+    }
+
     private fun mapResultToUser(result: UserTable): User {
         return User(
             result.id.value,
