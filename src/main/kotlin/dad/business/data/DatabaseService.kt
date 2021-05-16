@@ -397,6 +397,18 @@ class DatabaseService {
         }
     }
 
+    fun insertProduct(productName: String, categories : List<Int>) {
+        val insertIntoProductSQL = "INSERT INTO \"public\".product(name) VALUES('$productName') RETURNING id;"
+
+        transaction {
+            val newProductId = executeSQL(insertIntoProductSQL)
+
+            for (category in categories) {
+                executeSQL("INSERT INTO \"public\".product_categories(parent_category_id, child_product_id) VALUES('$category', '$newProductId') RETURNING parent_category_id;")
+            }
+        }
+    }
+
     private fun mapResultToUser(result: UserTable): User {
         return User(
             result.id.value,

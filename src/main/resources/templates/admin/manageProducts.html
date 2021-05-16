@@ -9,6 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1 user-scalable=0">
 <title>Add Store</title>
 
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var categories = /*[[${categories}]]*/ 'default';
+    console.log(categories);
+    /*]]>*/
+</script>
+
 <form>
     <div class="admin-section-group">
         <div>
@@ -24,7 +31,9 @@
         <div>
             <h2>Add A New Product:</h2>
             <label for="productName">Product Name:</label> <input name="productName" id="productName" type="text"/>
-            <label for="productCategory">Categories:</label> <select name="productCategory" id="productCategory" type="text"> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
+            <span id="categoryInputs">
+                <label for="productCategory">Categories:</label> <select name="productCategory" id="productCategory" type="text"> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
+            </span>
             <i class="fa fa-plus-circle addCategoryFieldBtn" id="addCategoryFieldBtn"></i>
         </div>
         <button class="btn btn-lg btn-primary" type="submit" value="Submit">Add Product</button>

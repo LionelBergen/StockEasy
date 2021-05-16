@@ -26,7 +26,15 @@ $(document).ready(function() {
 
     if ($('#addCategoryFieldBtn')) {
         $("#addCategoryFieldBtn").on('click', function(){
-            console.log('yes');
+            var innerHTMLToAdd = `<select name='productCategory' type='text'>`;
+
+            for(let i=0; i<categories.length; i++) {
+                innerHTMLToAdd += `<option value='${categories[i].id}'>${categories[i].name}</option>`;
+            }
+            innerHTMLToAdd += "</select>";
+
+
+            $('#categoryInputs')[0].innerHTML += innerHTMLToAdd;
         });
     }
 });

@@ -19,6 +19,8 @@ class ManageProductsController {
         @RequestParam(value = "categoryName", required = false) categoryName: String?,
         @RequestParam(value = "parentCategory", required = false) parentCategoryId: Int?,
         @RequestParam(value = "sortBy", required = false) sortByValue: Int?,
+        @RequestParam(value = "productName", required = false) productName: String?,
+        @RequestParam(value = "productCategory", required = false) productCategories: List<Int>?,
         request: HttpServletRequest, model: Model): String {
         val session: HttpSession = request.getSession(true)
         var currentLoggedInUser: User? = session.getAttribute("user") as User?
@@ -34,17 +36,12 @@ class ManageProductsController {
 
             model.addAttribute("feedback", "Added Category!")
             return "redirect:manageProducts";
-        } else {
-            /*if (vendorName.isNullOrBlank() || email.isNullOrBlank()) {
-                model.addAttribute("feedback", "Vendorname and email required")
-            } else {
-                try {
-                    DATBASE_UTIL.insertVendor(vendorName, email)
-                    model.addAttribute("feedback", "Added vendor!")
-                } catch (e : Exception) {
-                    model.addAttribute("feedback", e)
-                }
-            }*/
+        } else if (!productName.isNullOrBlank() && !productCategories!!.isEmpty()){
+            println(productName)
+            println(productCategories)
+
+            DATBASE_UTIL.insertProduct(productName, productCategories)
+            model.addAttribute("feedback", "Added Product!")
         }
 
         model.addAttribute("categories", DATBASE_UTIL.getAllCategories())
