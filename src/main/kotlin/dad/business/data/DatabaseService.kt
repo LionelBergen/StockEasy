@@ -116,7 +116,7 @@ class DatabaseService {
                 val name: String = preparedStatement.resultSet.getString("name")
                 val sortByValue: Int = preparedStatement.resultSet.getInt("sortbyvalue")
 
-                //results += Category(id, name, sortByValue)
+                results += Category(id, name, sortByValue)
             }
 
             return@transaction results
