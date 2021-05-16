@@ -439,7 +439,7 @@ class DatabaseService {
                 val categoryId: Int = preparedStatement.resultSet.getInt("category_id")
                 val categoryName: String = preparedStatement.resultSet.getString("category_name")
                 val variant = Variant(variantId, variantName, price)
-                val category = Category(categoryId, categoryName)
+                val category = Category(categoryId, categoryName, 0)
 
                 // TODO: category
                 if (results.map { it.id }.contains(id)) {
