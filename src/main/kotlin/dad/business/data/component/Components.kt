@@ -32,6 +32,7 @@ data class StoreItem(val id: Int, val sortByValue: Int?, val type: StoreItemType
 
 data class Category(val id: Int, val name: String)
 data class Variant(val id: Int, val name: String, val price: Double)
+data class Vendor(val id: Int, val name : String, val email: String)
 data class StoreProduct(val id: Int, val productName: String, var categories: Set<Category>, var variants: Set<Variant>, val vendorEmail: String)
 
 enum class StoreItemType(val type: String) {

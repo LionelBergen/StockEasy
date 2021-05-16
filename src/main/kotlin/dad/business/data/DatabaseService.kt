@@ -284,6 +284,26 @@ class DatabaseService {
         return results
     }
 
+    fun getAllVendors() : List<Vendor> {
+        var results = listOf<Vendor>()
+        val sql = "SELECT id, name, email FROM \"public\".vendor  "
+
+        transaction {
+            val preparedStatement = connection.prepareStatement(sql)
+            preparedStatement.execute()
+
+            while (preparedStatement.resultSet.next()) {
+                val id: Int = preparedStatement.resultSet.getInt("id")
+                val name: String = preparedStatement.resultSet.getString("name")
+                val email: String = preparedStatement.resultSet.getString("email")
+
+                results += Vendor(id, name, email)
+            }
+        }
+
+        return results
+    }
+
     fun findUserStores(username : String) : List<StoreWithCategoryIds> {
         var results = listOf<StoreWithCategoryIds>()
         val sql = "SELECT DISTINCT store.name AS name FROM \"public\".user JOIN \"public\".user_store ON user_store.user_id = \"user\".id JOIN \"public\".store ON store.id = user_store.store_id WHERE \"user\".username = '$username'"
