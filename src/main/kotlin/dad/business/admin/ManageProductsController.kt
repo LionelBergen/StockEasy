@@ -46,6 +46,7 @@ class ManageProductsController {
             return "redirect:manageProducts";
         }
 
+        model.addAttribute("categories", DATBASE_UTIL.getAllCategories())
         return "admin/manageProducts";
     }
 }

@@ -16,16 +16,16 @@
             <label for="name">Category Name:</label> <input name="name" id="name" type="text"/>
             <label for="sortBy">Sort By Value:</label> <input name="sortBy" id="sortBy" type="number" min="0" max="1000"/>
         </div>
-        <button class="btn btn-lg btn-primary" type="submit" value="submit" id="add-store-submit">Submit</button>
+        <button class="btn btn-lg btn-primary" type="submit" value="submit">Submit</button>
     </div>
 
     <div class="admin-section-group">
         <div>
             <h2>Add A New Product:</h2>
             <label for="productName">Product Name:</label> <input name="productName" id="productName" type="text"/>
-            
+            <label for="userType">Category:</label> <select name="userType" id="userType" type="text"> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
         </div>
-        <button class="btn btn-lg btn-primary" type="submit" value="submit" id="add-store-submit">Submit</button>
+        <button class="btn btn-lg btn-primary" type="submit" value="submit">Submit</button>
         <button class="btn btn-lg btn-primary" type="button" id="go-home">Home</button>
     </div>
 

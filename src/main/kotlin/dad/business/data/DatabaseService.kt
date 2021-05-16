@@ -103,6 +103,26 @@ class DatabaseService {
         return getProductsFromQuery(SQL, listOf(categoryId))
     }
 
+    fun getAllCategories() : Set<Category> {
+        val getCategoriesSql = "SELECT DISTINCT id, name, sortbyvalue FROM \"public\".category; "
+        val results = LinkedHashSet<Category>()
+
+        return transaction {
+            val preparedStatement = connection.prepareStatement(getCategoriesSql)
+            preparedStatement.execute()
+
+            while (preparedStatement.resultSet.next()) {
+                val id: Int = preparedStatement.resultSet.getInt("id")
+                val name: String = preparedStatement.resultSet.getString("name")
+                val sortByValue: Int = preparedStatement.resultSet.getInt("sortbyvalue")
+
+                //results += Category(id, name, sortByValue)
+            }
+
+            return@transaction results
+        }
+    }
+
     fun getProductsByVendor(vendorId: Int): Set<StoreProduct> {
         val SQL = "SELECT * FROM store_product WHERE vendor_id = ? ORDER BY product_name; "
 
