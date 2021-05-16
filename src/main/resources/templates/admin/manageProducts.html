@@ -13,7 +13,7 @@
     <div class="admin-section-group">
         <div>
             <h2>Add A New Category:</h2>
-            <label for="name">Category Name:</label> <input name="name" id="name" type="text"/>
+            <label for="categoryName">Category Name:</label> <input name="categoryName" id="categoryName" type="text"/>
             <label for="parentCategory">Parent Category:</label> <select name="parentCategory" id="parentCategory" type="text"> <option value="" text=""></option> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
             <label for="sortBy">Sort By Value:</label> <input name="sortBy" id="sortBy" type="number" value="10" min="0" max="1000"/>
         </div>

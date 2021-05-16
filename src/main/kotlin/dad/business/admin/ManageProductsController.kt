@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam
 class ManageProductsController {
     @RequestMapping("/admin/manageProducts")
     fun adminLandingPage(
-        @RequestParam(value = "name", required = false) vendorName: String?,
-        @RequestParam(value = "email", required = false) email: String?,
+        @RequestParam(value = "categoryName", required = false) categoryName: String?,
+        @RequestParam(value = "parentCategory", required = false) parentCategoryId: Int?,
+        @RequestParam(value = "sortBy", required = false) sortByValue: Int?,
         request: HttpServletRequest, model: Model): String {
         val session: HttpSession = request.getSession(true)
         var currentLoggedInUser: User? = session.getAttribute("user") as User?
@@ -28,11 +29,13 @@ class ManageProductsController {
             return "redirect:/store";
         }
 
-        if (vendorName.isNullOrBlank() && email.isNullOrBlank()) {
-            // clear the feedback
-            model.addAttribute("feedback", "")
+        if (!categoryName.isNullOrBlank() && sortByValue != null) {
+            DATBASE_UTIL.insertCategory(categoryName, parentCategoryId, sortByValue)
+
+            model.addAttribute("feedback", "Added Category!")
+            return "redirect:manageProducts";
         } else {
-            if (vendorName.isNullOrBlank() || email.isNullOrBlank()) {
+            /*if (vendorName.isNullOrBlank() || email.isNullOrBlank()) {
                 model.addAttribute("feedback", "Vendorname and email required")
             } else {
                 try {
@@ -41,9 +44,7 @@ class ManageProductsController {
                 } catch (e : Exception) {
                     model.addAttribute("feedback", e)
                 }
-            }
-
-            return "redirect:manageProducts";
+            }*/
         }
 
         model.addAttribute("categories", DATBASE_UTIL.getAllCategories())

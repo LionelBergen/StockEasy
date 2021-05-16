@@ -385,6 +385,18 @@ class DatabaseService {
         }
     }
 
+    fun insertCategory(categoryName: String, parentCategoryId : Int?, sortByValue: Int) {
+        val insertCategorySQL = "INSERT INTO \"public\".category(name, sortByValue) VALUES('$categoryName', '$sortByValue') RETURNING id;"
+
+        transaction {
+            val newCategoryId = executeSQL(insertCategorySQL)
+
+            if (parentCategoryId != null) {
+                executeSQL("INSERT INTO \"public\".categories(parent_category_id, child_category_id) VALUES('$parentCategoryId', '$newCategoryId') RETURNING parent_category_id;")
+            }
+        }
+    }
+
     private fun mapResultToUser(result: UserTable): User {
         return User(
             result.id.value,
