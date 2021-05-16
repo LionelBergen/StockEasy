@@ -11,6 +11,12 @@ $(document).ready(function() {
         });
     }
 
+    if($('#manage-products')) {
+        $("#manage-products").on('click', function(){
+            window.location.href = '/admin/manageProducts';
+        });
+    }
+
     if($('#go-home')) {
         $("#go-home").on('click', function(){
             window.location.href = '/';
