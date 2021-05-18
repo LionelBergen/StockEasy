@@ -32,7 +32,7 @@ class ManageProductsController {
         } else if (!currentLoggedInUser.userTypes.contains(UserType.ADMIN)) {
             return "redirect:/store";
         }
-        
+
         model.addAttribute("categories", DATBASE_UTIL.getAllCategories())
 
         if (!categoryName.isNullOrBlank() && sortByValue != null) {
@@ -56,7 +56,7 @@ class ManageProductsController {
                 println(variantPrices)
             }
 
-            // DATBASE_UTIL.insertProduct(productName, productCategories)
+            DATBASE_UTIL.insertProduct(productName, productCategories)
             model.addAttribute("feedback", "Added Product!")
         }
 
