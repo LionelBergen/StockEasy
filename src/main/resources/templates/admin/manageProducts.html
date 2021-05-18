@@ -12,7 +12,6 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     var categories = /*[[${categories}]]*/ 'default';
-    console.log(categories);
     /*]]>*/
 </script>
 
@@ -30,11 +29,19 @@
     <div class="admin-section-group">
         <div>
             <h2>Add A New Product:</h2>
-            <label for="productName">Product Name:</label> <input name="productName" id="productName" type="text"/>
+            <label for="productName" class="adminLabel">Product Name:</label> <input name="productName" id="productName" type="text"/> <br />
+
             <span id="categoryInputs">
-                <label for="productCategory">Categories:</label> <select name="productCategory" id="productCategory" type="text"> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
+                <label for="productCategory" class="adminLabel">Categories:</label> <select name="productCategory" id="productCategory" type="text"> <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> </select>
             </span>
-            <i class="fa fa-plus-circle addCategoryFieldBtn" id="addCategoryFieldBtn"></i>
+            <i class="fa fa-plus-circle addBtn" id="addCategoryFieldBtn"></i> <br />
+
+            <span id="variantInputs">
+                <label class="adminLabel">Variants:</label> <label for="variantName">Description: </label><input type="text" name="variantName" id="variantName"/> <label for="variantPrice">Price: </label> <input type="number" min="0.0" name="variantPrice" id="variantPrice" />
+            </span>
+            <i class="fa fa-plus-circle addBtn" id="addVariantFieldBtn"></i> <br />
+
+
         </div>
         <button class="btn btn-lg btn-primary" type="submit" value="Submit">Add Product</button>
         <button class="btn btn-lg btn-primary" type="button" id="go-home">Home</button>

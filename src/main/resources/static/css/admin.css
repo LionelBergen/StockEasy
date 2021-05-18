@@ -14,8 +14,13 @@
     margin-bottom: 50px;
 }
 
-.addCategoryFieldBtn {
+.addBtn {
     color: green;
     margin-right: 20px;
     cursor: pointer;
+}
+
+/** Make the input fields line up by having the labels all same width **/
+.adminLabel {
+    width: 180px;
 }

@@ -37,4 +37,11 @@ $(document).ready(function() {
             $('#categoryInputs')[0].innerHTML += innerHTMLToAdd;
         });
     }
+
+    if ($('#addVariantFieldBtn')) {
+        const innerHTMLToAdd = `<label>Description: </label><input type="text" name="variantName" /> <label>Price: </label> <input type="number" min="0.0" name="variantPrice" />`;
+        $('#addVariantFieldBtn').on('click', function() {
+            $('#variantInputs')[0].innerHTML += innerHTMLToAdd;
+        });
+    }
 });
