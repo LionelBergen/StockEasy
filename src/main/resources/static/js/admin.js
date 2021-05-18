@@ -34,14 +34,26 @@ $(document).ready(function() {
             innerHTMLToAdd += "</select>";
 
 
-            $('#categoryInputs')[0].innerHTML += innerHTMLToAdd;
+            // $('#categoryInputs')[0].innerHTML += innerHTMLToAdd;
+            addToInnerHTML($('#categoryInputs')[0], innerHTMLToAdd);
         });
     }
 
     if ($('#addVariantFieldBtn')) {
         const innerHTMLToAdd = `<label>Description: </label><input type="text" name="variantName" /> <label>Price: </label> <input type="number" min="0.0" name="variantPrice" />`;
         $('#addVariantFieldBtn').on('click', function() {
-            $('#variantInputs')[0].innerHTML += innerHTMLToAdd;
+            //$('#variantInputs')[0].innerHTML += innerHTMLToAdd;
+            addToInnerHTML($('#variantInputs')[0], innerHTMLToAdd);
         });
+    }
+
+    // Simply using innerHTML += will reset the form, removing all user input and event listeners
+    function addToInnerHTML(elementToAddTo, htmlToAddAsString) {
+        let newcontent = document.createElement('span');
+        newcontent.innerHTML = htmlToAddAsString;
+
+        while (newcontent.firstChild) {
+            elementToAddTo.appendChild(newcontent.firstChild);
+        }
     }
 });
