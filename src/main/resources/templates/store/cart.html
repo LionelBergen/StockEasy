@@ -32,7 +32,7 @@
                         <td class="cart_variant" th:data="${cart_product.variantId}" th:text="${cart_product.variantName}"></td>
                         <td class="cart_vendor" th:data="${cart_product.vendorId}" th:text="${cart_product.vendorName}"></td>
                         <td class="cart_price" th:data="${cart_product.price}" th:text="${cart_product.priceDisplay}"></td>
-                        <td><button class="remove_from_cart" th:data-index="${iter.index}">remove from cart</button></td>
+                        <td><button class="remove_from_cart" th:data-index="${iter.index}">remove</button></td>
                     </tr>
                 </tbody>
             </table>
