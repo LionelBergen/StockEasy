@@ -35,6 +35,7 @@ class ManageProductsController {
         }
 
         model.addAttribute("categories", DATBASE_UTIL.getAllCategories())
+        model.addAttribute("vendors", DATBASE_UTIL.getAllVendors())
 
         if (!categoryName.isNullOrBlank() && sortByValue != null) {
             DATBASE_UTIL.insertCategory(categoryName, parentCategoryId, sortByValue)
