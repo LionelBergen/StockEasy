@@ -40,7 +40,7 @@ $(document).ready(function() {
     }
 
     if ($('#addVariantFieldBtn')) {
-        const innerHTMLToAdd = `<label>Description: </label><input type="text" name="variantName" /> <label>Price: </label> <input type="number" min="0.0" name="variantPrice" />`;
+        const innerHTMLToAdd = `<label>Description: </label><input type="text" name="variantName" /> <label>Price: </label> <input type="number" min="0.0" step="0.01" name="variantPrice" />`;
         $('#addVariantFieldBtn').on('click', function() {
             //$('#variantInputs')[0].innerHTML += innerHTMLToAdd;
             addToInnerHTML($('#variantInputs')[0], innerHTMLToAdd);
