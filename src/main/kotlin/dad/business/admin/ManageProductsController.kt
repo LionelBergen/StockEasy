@@ -22,6 +22,7 @@ class ManageProductsController {
         @RequestParam(value = "sortBy", required = false) sortByValue: Int?,
         @RequestParam(value = "productName", required = false) productName: String?,
         @RequestParam(value = "productCategory", required = false) productCategories: List<Int>?,
+        @RequestParam(value = "vendor", required = false) vendors: List<Int>?,
         @RequestParam(value = "variantName", required = false) variantNames: List<String>?,
         @RequestParam(value = "variantPrice", required = false) variantPrices: List<Double>?,
         request: HttpServletRequest, model: Model): String {
@@ -56,8 +57,7 @@ class ManageProductsController {
                     variantsToAdd += Variant(-1, filteredVariantNames[i], filteredVariantPrices[i])
                 }
 
-
-                DATBASE_UTIL.insertProduct(productName, productCategories, variantsToAdd)
+                DATBASE_UTIL.insertProduct(productName, productCategories, vendors!!, variantsToAdd)
                 model.addAttribute("feedback", "Added Product!")
             } else {
                 model.addAttribute("feedback", "Atleast one Variant required")

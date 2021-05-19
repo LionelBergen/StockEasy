@@ -397,7 +397,7 @@ class DatabaseService {
         }
     }
 
-    fun insertProduct(productName: String, categories : List<Int>, variants: List<Variant>) {
+    fun insertProduct(productName: String, categories : List<Int>, vendors: List<Int>, variants: List<Variant>) {
         val insertIntoProductSQL = "INSERT INTO \"public\".product(name) VALUES('$productName') RETURNING id;"
 
         transaction {
@@ -408,7 +408,11 @@ class DatabaseService {
             }
 
             for (variant in variants) {
-                executeSQL("INSERT INTO \"public\".variant(product_id, price, name) VALUES('$newProductId', '${variant.price}', '${variant.name}') RETURNING product_id;")
+                val variantId = executeSQL("INSERT INTO \"public\".variant(product_id, price, name) VALUES('$newProductId', '${variant.price}', '${variant.name}') RETURNING id;")
+
+                for (vendor in vendors) {
+                    executeSQL("INSERT INTO \"public\".vendor_product(price, variant_id, vendor_id) VALUES('${variant.price}', '$variantId', '$vendor') RETURNING id;")
+                }
             }
         }
     }
