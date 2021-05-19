@@ -41,9 +41,6 @@ class ManageProductsController {
             model.addAttribute("feedback", "Added Category!")
             return "redirect:manageProducts";
         } else if (!productName.isNullOrBlank() && productCategories!!.isNotEmpty()){
-            println(productName)
-            println(productCategories)
-
             if (!variantNames.isNullOrEmpty() && !variantPrices.isNullOrEmpty()) {
                 val filteredVariantNames = variantNames.filter { e -> !e.isNullOrEmpty() };
                 val filteredVariantPrices = variantPrices.filter { e -> e != null && !e.isNaN() };
@@ -52,8 +49,7 @@ class ManageProductsController {
                     return "admin/manageProducts";
                 }
 
-                println(variantNames)
-                println(variantPrices)
+
             }
 
             DATBASE_UTIL.insertProduct(productName, productCategories)
