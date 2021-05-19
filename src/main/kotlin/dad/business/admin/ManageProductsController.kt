@@ -50,10 +50,11 @@ class ManageProductsController {
                 }
 
 
+                DATBASE_UTIL.insertProduct(productName, productCategories)
+                model.addAttribute("feedback", "Added Product!")
+            } else {
+                model.addAttribute("feedback", "Atleast one Variant required")
             }
-
-            DATBASE_UTIL.insertProduct(productName, productCategories)
-            model.addAttribute("feedback", "Added Product!")
         }
 
         return "admin/manageProducts";
