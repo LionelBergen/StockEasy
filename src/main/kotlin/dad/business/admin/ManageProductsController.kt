@@ -3,6 +3,7 @@ package dad.business.admin
 import dad.business.data.DATBASE_UTIL
 import dad.business.data.component.User
 import dad.business.data.component.UserType
+import dad.business.data.component.Variant
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PostMapping
@@ -49,8 +50,13 @@ class ManageProductsController {
                     return "admin/manageProducts";
                 }
 
+                var variantsToAdd : List<Variant> = listOf()
+                for (i in 0..(filteredVariantNames.size-1)) {
+                    variantsToAdd += Variant(-1, filteredVariantNames[i], filteredVariantPrices[i])
+                }
 
-                DATBASE_UTIL.insertProduct(productName, productCategories)
+
+                DATBASE_UTIL.insertProduct(productName, productCategories, variantsToAdd)
                 model.addAttribute("feedback", "Added Product!")
             } else {
                 model.addAttribute("feedback", "Atleast one Variant required")
