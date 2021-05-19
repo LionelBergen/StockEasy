@@ -26,7 +26,7 @@ $(document).ready(function() {
 
     if ($('#addCategoryFieldBtn')) {
         $("#addCategoryFieldBtn").on('click', function(){
-            var innerHTMLToAdd = `<select name='productCategory' type='text'>`;
+            let innerHTMLToAdd = `<select name='productCategory' type='text'>`;
 
             for(let i=0; i<categories.length; i++) {
                 innerHTMLToAdd += `<option value='${categories[i].id}'>${categories[i].name}</option>`;
@@ -44,6 +44,18 @@ $(document).ready(function() {
         $('#addVariantFieldBtn').on('click', function() {
             //$('#variantInputs')[0].innerHTML += innerHTMLToAdd;
             addToInnerHTML($('#variantInputs')[0], innerHTMLToAdd);
+        });
+    }
+
+    if ($('#addVendorFieldBtn')) {
+        $('#addVendorFieldBtn').on('click', function() {
+            let innerHTMLToAdd = `<select name="vendor" type="text">`;
+            for(let i=0; i<vendors.length; i++) {
+                innerHTMLToAdd += `<option value='${vendors[i].id}'>${vendors[i].name}</option>`;
+            }
+            innerHTMLToAdd += "</select>";
+            
+            addToInnerHTML($('#vendorInputs')[0], innerHTMLToAdd);
         });
     }
 

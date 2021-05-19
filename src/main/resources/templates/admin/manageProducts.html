@@ -45,7 +45,7 @@
             <span id="vendorInputs">
                 <label for="vendor" class="adminLabel">Vendors:</label> <select name="vendor" id="vendor" type="text"> <option th:each="vendor : ${vendors}" th:value="${vendor.id}" th:text="${vendor.name}"></option> </select>
             </span>
-            <i class="fa fa-plus-circle addBtn" id="addVendorsBtn"></i> <br />
+            <i class="fa fa-plus-circle addBtn" id="addVendorFieldBtn"></i> <br />
         </div>
         <button class="btn btn-lg btn-primary" type="submit" value="Submit">Add Product</button>
         <button class="btn btn-lg btn-primary" type="button" id="go-home">Home</button>
